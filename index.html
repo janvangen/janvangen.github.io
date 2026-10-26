@@ -4,99 +4,85 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>janvangen</title>
-<meta name="description" content="写可复现的技术实践，做能直接用的开源小工具。">
+<meta name="description" content="跑不出来，就等于没发生。">
 <style>
 :root{
-  --bg:#0b0e14; --fg:#e6edf3; --muted:#8b949e; --line:#1f2630;
-  --card:#11161f; --accent:#7ee787; --accent2:#79c0ff;
-}
-@media (prefers-color-scheme: light){
-  :root{ --bg:#fbfbfa; --fg:#1a1a1a; --muted:#6b6b6b; --line:#e6e4e0;
-         --card:#ffffff; --accent:#1a7f37; --accent2:#0969da; }
+  --bg:#f4f6f8; --fg:#1c2430; --muted:#697586; --line:#dde3ea;
+  --card:#ffffff; --accent:#0b6bcb; --accent2:#d1345b;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
-  margin:0; background:var(--bg); color:var(--fg);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC",
-              "Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  font-size:16px; line-height:1.78; letter-spacing:.01em;
+  margin:0; color:var(--fg); background:#f4f6f8;
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size:16px; line-height:1.72; letter-spacing:.005em;
 }
-main{max-width:720px; margin:0 auto; padding:88px 24px 120px}
-h1,h2,h3{line-height:1.3; letter-spacing:-.01em}
+main{max-width:860px; margin:0 auto; padding:72px 24px 110px}
+h1,h2,h3{line-height:1.28; letter-spacing:-.01em; font-weight:650}
 a{color:var(--accent2); text-decoration:none; border-bottom:1px solid transparent}
 a:hover{border-bottom-color:var(--accent2)}
-
-.hero{padding-bottom:44px; border-bottom:1px solid var(--line)}
-.eyebrow{margin:0 0 14px; font-size:13px; color:var(--muted);
-         letter-spacing:.14em; text-transform:uppercase}
+.eyebrow{margin:0 0 14px; font-size:12.5px; color:var(--muted);
+  letter-spacing:.16em; text-transform:uppercase}
+.hero{padding-bottom:40px; border-bottom:1px solid var(--line)}
 .hero h1{margin:0; font-size:40px; font-weight:650}
-.tagline{margin:16px 0 0; font-size:18px; color:var(--muted); max-width:34em}
+.tagline{margin:16px 0 0; font-size:18px; color:var(--muted); max-width:36em}
 .links{margin:16px 0 0; font-size:15px}
-.links a{color:var(--accent2)}
-
-section{padding:44px 0; border-bottom:1px solid var(--line)}
+section{padding:42px 0; border-bottom:1px solid var(--line)}
 section:last-of-type{border-bottom:0}
-h2{margin:0 0 22px; font-size:13px; font-weight:600; letter-spacing:.14em;
-   text-transform:uppercase; color:var(--muted)}
-
-.about p{margin:0 0 18px; font-size:17px}
+h2{margin:0 0 20px; font-size:13px; font-weight:650; color:var(--muted)}
+.about p{margin:0 0 18px; font-size:1.05em}
 ul.traits{list-style:none; margin:0; padding:0; display:grid; gap:10px}
-ul.traits li{padding-left:20px; position:relative; color:var(--fg)}
-ul.traits li::before{content:""; position:absolute; left:2px; top:.72em;
-  width:7px; height:1px; background:var(--accent)}
-
+ul.traits li{padding-left:22px; position:relative}
+ul.traits li::before{content:""; position:absolute; left:2px; top:.74em;
+  width:8px; height:8px; border-radius:50%; background:var(--accent)}
 .grid{display:grid; gap:14px}
-@media(min-width:640px){ .grid.two{grid-template-columns:1fr 1fr} }
-.card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px}
-.card h3{margin:0 0 8px; font-size:17px; font-weight:600}
+@media(min-width:660px){ .grid.two{grid-template-columns:1fr 1fr} }
+.card h3{margin:0 0 8px; font-size:17px; font-weight:650}
 .card p{margin:0; color:var(--muted); font-size:15px}
 .card .status{display:inline-block; margin-top:12px; font-size:12px;
   color:var(--accent); letter-spacing:.06em}
-
 ul.repos{list-style:none; margin:0; padding:0}
 ul.repos li{padding:16px 0; border-bottom:1px dashed var(--line)}
 ul.repos li:last-child{border-bottom:0}
-ul.repos .name{font-weight:600}
+ul.repos .name{font-weight:650}
 ul.repos .desc{color:var(--muted); font-size:15px; margin-top:2px}
-
-.tags{display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none}
-.tags li{border:1px solid var(--line); border-radius:999px;
-  padding:6px 14px; font-size:14px; color:var(--muted)}
-
-ol.timeline{list-style:none; margin:0; padding:0 0 0 20px;
-  border-left:1px solid var(--line)}
-ol.timeline li{position:relative; padding:0 0 26px 20px}
+ul.tags{display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none}
+ol.timeline{list-style:none; margin:0; padding:0 0 0 22px}
+ol.timeline li{position:relative; padding:0 0 24px 20px}
 ol.timeline li:last-child{padding-bottom:0}
-ol.timeline li::before{content:""; position:absolute; left:-25px; top:.62em;
-  width:9px; height:9px; border-radius:50%; background:var(--bg);
-  border:1px solid var(--accent)}
+ol.timeline li::before{content:""; position:absolute; left:-27px; top:.62em;
+  width:9px; height:9px; border-radius:50%; border:1px solid var(--accent)}
 ol.timeline .when{display:block; font-size:12px; color:var(--muted);
   letter-spacing:.08em; margin-bottom:2px}
-
-footer{padding-top:44px; border-top:1px solid var(--line); margin-top:44px}
-footer .mission{margin:0 0 10px; font-size:17px}
+footer{padding-top:40px; border-top:1px solid var(--line); margin-top:40px}
+footer .mission{margin:0 0 10px; font-size:1.05em}
 footer .note{margin:0; color:var(--muted); font-size:14px}
+.hero{border:2px solid #dde3ea;border-radius:8px;padding:32px 28px}
+h2{display:inline-block;background:#0b6bcb22;border-left:3px solid #0b6bcb;padding:4px 12px;border-radius:2px;text-transform:none;letter-spacing:.03em;font-size:14px}
+.card{background:#ffffff;border:1px solid #dde3ea;border-radius:8px;padding:20px;box-shadow:0 1px 3px rgba(16,24,40,.08)}
+
+background-image:radial-gradient(#dde3ea 1px, transparent 1px);background-size:22px 22px;
 </style>
 </head>
 <body>
 <main>
 
 <header class="hero">
-  <p class="eyebrow">技术实践 · 开源工具 · 可执行文档</p>
+  <p class="eyebrow">生成结果的可复现性</p>
   <h1>janvangen</h1>
-  <p class="tagline">写可复现的技术实践，做能直接用的开源小工具。</p>
+  <p class="tagline">跑不出来，就等于没发生。</p>
   <p class="links"><a href="https://github.com/janvangen" rel="noopener">GitHub 主页</a></p>
 </header>
 
 <section class="about" id="about">
   <h2>关于</h2>
-  <p>我是 janvangen，一边写技术实践，一边把工作里反复踩的坑做成能跑的小工具。 我关心两件事：文档里的步骤能不能真的跑起来，以及工具的边界在哪里说清楚。 所以我写的工具都会先在我自己的流程里用够时间，再开源；README 里会写清楚&quot;什么情况下别用&quot;。 没有实际跑过的结论我会直接标注&quot;没跑过&quot;，不用听起来很确定的说法来填充页面。</p>
+  <p>我是 janvangen。之前我写过 stepcheck，专门检查文档里的命令是不是真的能跑。这次做的是同一件事的另一半：让一次跑过的结果，能被原样再跑一遍。
+
+reprotrace 把提示词、参数、输入、环境与模型版本一起快照，存成一份档案。它很诚实地标出哪些部分本来就不可能完全复现——比如模型权重更新——而不是假装一切都能复现。</p>
   <ul class="traits">
-    <li>工具必须零依赖或只依赖标准库，否则别人根本不会用第二次。</li>
-    <li>README 里先写「什么时候别用」，再写怎么用。</li>
-    <li>不确定的数字一定标注来源；没跑过的结论直接写「没跑过」。</li>
-    <li>每个项目都配一个自检命令，让别人三十秒内确认它还活着。</li>
+    <li>只做生成结果的可复现性，不做看起来更通用的事。</li>
+    <li>结论要能追到具体的证据，不接受「一般来说」。</li>
+    <li>拿不准的地方直接说不确定，不硬凑一个结论。</li>
   </ul>
 </section>
 
@@ -104,19 +90,19 @@ footer .note{margin:0; color:var(--muted); font-size:14px}
   <h2>研究方向</h2>
   <div class="grid two">
     <article class="card">
-      <h3>文档的可执行性</h3>
-      <p>怎么让教程里的每条命令都能被自动验证，而不是靠读者的运气？</p>
+      <h3>不可控因素的清单</h3>
+      <p>到底有哪些因素在偷偷影响结果？</p>
+      <span class="status">持续沉淀</span>
+    </article>
+    <article class="card">
+      <h3>环境快照的边界</h3>
+      <p>快照到什么程度才算够？</p>
+      <span class="status">在研究</span>
+    </article>
+    <article class="card">
+      <h3>复现与等价的区别</h3>
+      <p>结果一样就算复现成功吗？</p>
       <span class="status">在做工具</span>
-    </article>
-    <article class="card">
-      <h3>小工具的可持续性</h3>
-      <p>一个只有几十行的 CLI 工具，怎么做到让人愿意在两年后还回来用？</p>
-      <span class="status">持续观察</span>
-    </article>
-    <article class="card">
-      <h3>单文件工具的边界</h3>
-      <p>什么时候一个脚本该拆成包，什么时候拆了就没人用了？</p>
-      <span class="status">长期思考</span>
     </article>
   </div>
 </section>
@@ -124,6 +110,9 @@ footer .note{margin:0; color:var(--muted); font-size:14px}
 <section id="work">
   <h2>开源</h2>
   <ul class="repos">
+    <li><div class="name"><a href="https://github.com/janvangen/reprotrace" rel="noopener">reprotrace</a></div>
+      <div class="desc">记录提示词、参数、输入与环境快照，让同一次生成能被再次跑出来。</div>
+    </li>
     <li><div class="name"><a href="https://github.com/janvangen/stepcheck" rel="noopener">stepcheck</a></div>
       <div class="desc">识别未替换的占位符、未赋值的模板变量与未闭合引号，只读本地文件，不联网。</div>
     </li>
@@ -133,9 +122,8 @@ footer .note{margin:0; color:var(--muted); font-size:14px}
 <section id="hobbies">
   <h2>业余</h2>
   <ul class="tags">
-    <li>把工作里第三遍手写的东西写成脚本</li>
-    <li>读别人的 README，挑出里面跑不通的那一步</li>
-    <li>在城市里挑没有攻略的路线走</li>
+    <li>维护一份模型版本与行为变化的对照记录</li>
+    <li>复现别人报告的诡异结果</li>
   </ul>
 </section>
 
@@ -147,18 +135,14 @@ footer .note{margin:0; color:var(--muted); font-size:14px}
       注册 GitHub 账号。
     </li>
     <li>
-      <span class="when">2026-10-24</span>
-      开始搭建个人技术影响力操作系统。
-    </li>
-    <li>
-      <span class="when">2026-10-25</span>
-      开源第一个工具 stepcheck，用于检查文档里的 shell 步骤是否可执行。
+      <span class="when">2026-10-26</span>
+      开源 reprotrace，用于处理生成结果的可复现性相关的问题。
     </li>
   </ol>
 </section>
 
 <footer>
-  <p class="mission">让&quot;照着做就能跑起来&quot;成为技术写作的默认标准，而不是运气。</p>
+  <p class="mission">让每一次生成都留下可以重跑的凭据。</p>
   <p class="note">这个页面在生长。每一次真实的提交都会被记下来。</p>
 </footer>
 
